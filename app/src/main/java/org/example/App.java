@@ -7,53 +7,37 @@ import java.util.Scanner;
 
 public class App {
 
-  public static void main(String[] args) {
-    // Som intro idag skal me gå igjennom 3 ting
-    // if og else statements
-    // While løkker
-    // Hvordan hente input fra konsoll og hvordan man skal skrive til konsoll
-    
+  public static void main(final String[] args) {
+    // Boolean for hele spillet:)
+    boolean doNotFinish = false;
+    // Starter en scanner, dette lar brukerene skrive input
+    Scanner scanner = new Scanner(System.in);
+    // Variable for å lagre spillernavnet
+    String playerName = null;
+    // Boolean for å gå videre til neste spørsmål
+    boolean nextQuestion = false;
+    // Tom teksstreng for å lagre spilleren sitt valg
+    String playerChoice = null;
 
-    // String høgre = "Høyre";
-    // String Venstre = "Venstre";
-    // 
-    // //If setning
-    // if (høgre.equals("Høyre")){
-    //   System.out.println("Korrekt!");
-    // } else {
-    //   System.out.println("Feil!");
-    // }
-    // // If setning med negasjon
-    // if (!Venstre.equals("Venstre")){
-    //   System.out.println("Korrekt");
-    // } else {
-    //   System.out.println("Feil");
-    // }
-    // // If else setning
-    // if (!høgre.equals("Høgre")){
-    //   System.out.println("Korrekt");
-    // } else if (Venstre.equals("Venstre")){
-    //   System.out.println("Korrekt");
-    // } else {
-    //   System.out.println("Feil");
-    // }
-    
-    //While løkke
-    // boolean ferdig = false;
-    // int i = 0;
-    // while (ferdig == false){
-    //     System.out.println(i);
-    //     if (i == 10){
-    //       ferdig = true;
-    //     }
-    // }
-    //
+    // Start spillet
+    while (!doNotFinish) {
 
-    // Ta input fra bruker
-    // Scanner brukerinput = new Scanner(System.in);
-    // String input = brukerinput.nextLine();
-    // System.out.println("Brukeren skrev: " + input);
-    // brukerinput.close();
+      while (!nextQuestion) {
+        System.out.println("Skriv inn navnet ditt!");
+        String input = scanner.nextLine();
+        if (input.equals("exit")) {
+          System.out.println("Ferdig");
+          doNotFinish = true;
+          nextQuestion = true;
+        } else {
+          playerName = input;
+          System.out.println("Velkommen, " + playerName + "!");
+          nextQuestion = true;
+        }
+      }
+    }
+    scanner.close();
   }
-
 }
+
+
