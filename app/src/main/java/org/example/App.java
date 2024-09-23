@@ -5,8 +5,25 @@ package org.example;
 
 import java.util.Scanner;
 
+
 public class App {
 
+  public static String stillSpørsmål(String spørsmål, Scanner reader, String alternativ1, String alternativ2){
+    boolean notDone = false;
+    while(!notDone){
+      System.out.println(spørsmål);
+      String input = reader.nextLine();
+      if (input.toLowerCase().equals(alternativ1)){
+        notDone = true;
+        return alternativ1;
+      } else if(input.toLowerCase().equals(alternativ2)) {
+          notDone = true;
+          return alternativ2;
+      }
+    }
+    return null;
+  }
+  
   public static void main(final String[] args) {
     // Boolean for hele spillet:)
     boolean doNotFinish = false;
@@ -21,7 +38,6 @@ public class App {
 
     // Start spillet
     while (!doNotFinish) {
-
       while (!nextQuestion) {
         System.out.println("Skriv inn navnet ditt!");
         String input = scanner.nextLine();
@@ -35,7 +51,38 @@ public class App {
           nextQuestion = true;
         }
       }
+
+      // nextQuestion = false;
+      String spørsmål2 = "Du ser en trolmman og et troll. \n Trollmannen står til venstre og trollet til høgre. \n Skriv venstre eller høgre for å velge vei";
+      // while(!nextQuestion){
+      //   System.out.println(spørsmål2);
+      //   String input = scanner.nextLine();
+      //   if (input.toLowerCase().equals("høgre")){
+      //     nextQuestion = true;
+      //     playerChoice = "Høgre";
+      //   } else if(input.toLowerCase().equals("venstre")){
+      //     nextQuestion = true;
+      //     playerChoice = "Høgre";
+      //   } 
+      // }
+
+      playerChoice = stillSpørsmål(spørsmål2, scanner, "høgre", "venstre");
+
+      nextQuestion = false;
+      
+      // String spørsmål3 = "Du står nå ved en bro, den går over en elv. Broen ser utrygg ut og elven har sterk strøm. \n Skriv bro for å gå over broen skriv elv for å svømme over elven";
+      // while(!nextQuestion){
+      //   String svar = scanner.nextLine();
+      //   String result = stillSpørsmål(svar, "bro", "elv");
+      //   if (result != null){
+      //     playerChoice = result;
+      //     nextQuestion = true;
+      //   }
+      // }
+
+      doNotFinish = true;
     }
+    System.out.println("Takk for at du spilte!");
     scanner.close();
   }
 }
